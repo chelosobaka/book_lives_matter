@@ -1,0 +1,8 @@
+.row
+  .col-6
+    = render partial: "profile", locals: { user: @user }
+  .col-6
+    - if @reviews.empty?
+      %p Отзывов подписчиков нету.
+    - else
+      = render partial: 'reviews/review', collection: @reviews

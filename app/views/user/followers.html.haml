@@ -1,0 +1,11 @@
+.row
+  .col-6
+    = render partial: "profile", locals: { user: @user }
+  .col-6
+    - if @followers.empty?
+      - if user_has_rights?(@user)
+        %p У вас нету подписчиков.
+      - else
+        %p У #{@user.username} нету подписчиков.
+    - else
+      = render partial: "user", collection: @followers

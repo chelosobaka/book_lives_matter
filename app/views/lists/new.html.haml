@@ -1,0 +1,7 @@
+.row
+  .col-6
+    = render partial: "user/profile", locals: { user: @user }
+  .col-6
+    %h1 New List
+    = render 'form'
+    = link_to 'Back', user_lists_path(@user.id)

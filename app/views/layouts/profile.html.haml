@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Blm
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = render "layouts/navbar"
+    .container
+      .row
+        .col-6
+          %h3= @user.username
+          = link_to "lists", user_lists_path(@user.id)
+          %br/
+          = link_to "followers", user_followers_path(@user.id)
+          %br/
+          = link_to "subscriptions", user_subscriptions_path(@user.id)
+          %br/
+          = link_to "#{@user.username} reviws", user_reviews_path(@user.id)
+          %br/
+          = link_to "subscriptions reviews", user_subscriptions_path(@user.id)
+          %br/
+        .col-6
+          = yield

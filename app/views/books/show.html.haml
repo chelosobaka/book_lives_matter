@@ -1,0 +1,49 @@
+- flash.each do |type, message|
+  = message
+- if user_signed_in?
+  = form_for @book_list  do |form|
+    = form.collection_select :list_id, current_user.lists, :id, :name, prompt: "Select a list", class: "form-control"
+    = form.hidden_field :book_id, value: @book.id
+    = form.submit class: 'btn btn-primary'
+.row
+  .col
+    %h3
+      = @book.title
+      = @book.mean_rating(@book)
+      = star_color(@book.mean_rating(@book))
+    %p
+      Автор: #{autor_link(@book)}
+    %p
+      Серия: #{@book.series}
+    %p
+      ISBN: #{@book.isbn}
+    %p= image_tag @book.poster
+  .col
+    - @reviews.each do |review|
+      %h4
+        = review.user.username
+        \: #{review.rating}
+      %p= review.body
+      %p= review.created_at
+      - if review.user == current_user
+        = link_to "edit review", edit_book_review_path(@book.id, review.id)
+    - if user_signed_in?
+      = link_to "new review", new_book_review_path(@book.id)
+
+- if user_signed_in?
+  = form_with model: [@book, @review] do |form|
+    - if @review.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@review.errors.count, "error")
+          prohibited this review from being saved:
+        %ul
+          - @review.errors.full_messages.each do |message|
+            %li= message
+    .field
+      = form.label :body
+      = form.text_area :body
+    .field
+      = form.select :rating, collection: Review::RATING, prompt: "Select rating"
+    .actions
+      = form.submit

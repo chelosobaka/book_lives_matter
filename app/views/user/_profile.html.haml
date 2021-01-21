@@ -1,0 +1,12 @@
+%h3= user.username
+= link_to "lists", user_lists_path(user.id)
+%br/
+= link_to "followers", user_followers_path(user.id)
+%br/
+= link_to "subscriptions", user_subscriptions_path(user.id)
+%br/
+= link_to "#{user.username} reviws", user_reviews_path(user.id)
+%br/
+- if user_has_rights?(user)
+  = link_to "subscriptions reviews", user_subscriptions_reviews_path(user.id)
+%br/

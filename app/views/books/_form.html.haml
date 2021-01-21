@@ -1,0 +1,11 @@
+= form_for @book do |form|
+  - if book.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(book.errors.count, "error")
+        prohibited this book from being saved:
+      %ul
+        - book.errors.full_messages.each do |message|
+          %li= message
+  = form.collection_select :author_ids, Author.order("name ASC").all, "id", :name, prompt: "Select an option", class: "form-control"
+  = form.submit class: 'btn btn-primary'

@@ -1,0 +1,8 @@
+= link_to "#{review.book.title}", book_path(review.book.id)
+%h4
+  = review.user.username
+  \: #{review.rating}
+%p= review.body
+%p= review.created_at
+- if review.user == current_user
+  = link_to "edit review", edit_book_review_path(review.book.id, review.id)
