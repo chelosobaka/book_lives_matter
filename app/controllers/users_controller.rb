@@ -1,9 +1,13 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   before_action :set_user, only: [:show]
   before_action :set_user_id, only: [:followers, :subscriptions, :user_reviews, :subscriptions_reviews]
 
   def index
-    @users = User.all
+    if params[:search].present?
+      @users = User.where("lower(username) LIKE ?", params[:search].downcase)
+    else
+      @users = User.all
+    end
   end
 
   def show

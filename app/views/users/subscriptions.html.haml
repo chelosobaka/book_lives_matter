@@ -8,4 +8,5 @@
       - else
         %p У #{@user.username} нету подписок.
     - else
-      = render partial: "user", collection: @subscriptions
+      .users-container
+        = render partial: "user", collection: @subscriptions

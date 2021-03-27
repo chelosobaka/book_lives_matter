@@ -1,16 +1,11 @@
-= form_with model: [@book, @review] do |form|
-  - if review.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(review.errors.count, "error")
-        prohibited this review from being saved:
-      %ul
-        - review.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = form.label :body
-    = form.text_area :body
-  .field
-    = form.select :rating, collection: Review::RATING, prompt: "Select rating"
-  .actions
-    = form.submit
+.review-form
+  - if user_signed_in?
+    = form_for [@book, @review] do |form|
+      -form_errors_for(@review)
+      .field
+        = form.text_area :body, class: "review-text-block"
+      .field.rating_block
+        = form.label "Оценка: "
+        = form.select :rating, Review::RATING
+      .action
+        = form.submit "Оставить отзыв", class: "btn btn-primary"

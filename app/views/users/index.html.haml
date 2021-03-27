@@ -1,0 +1,13 @@
+.title-with-form
+  %h1.mb-4 Пользователи BLM
+  = form_tag users_path, method: "get" do
+    = text_field_tag :search, params[:search]
+    = submit_tag "Искать пользователя", class: "btn btn-primary"
+.row
+  .col-6
+    .picture
+      =image_tag "2.png"
+  .col-6
+    .scroll-box
+      .users-container
+        = render partial: "user", collection: @users

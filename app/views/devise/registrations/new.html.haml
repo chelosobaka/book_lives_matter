@@ -1,25 +1,25 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :username
-    %br/
-    = f.text_field :username, autofocus: true, autocomplete: "username"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.container-devise
+  .center
+    %h3 Sign up
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.label :email, content_tag(:span , "", class: ["fa", "fa-at"]).html_safe, id: "icon"
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email"
+      .field
+        = f.label :username, content_tag(:span , "", class: ["fa", "fa-user"]).html_safe, id: "icon"
+        = f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "username"
+      .mt-5
+        - if @minimum_password_length
+          %small.text-danger
+            Password:
+            (#{@minimum_password_length} characters minimum)
+        .field
+          = f.label :password, content_tag(:span , "", class: ["fa", "fa-lock"]).html_safe, id: "icon"
+          = f.password_field :password, autocomplete: "new-password", placeholder: "password"
+        .field
+          = f.label :password_confirmation, content_tag(:span , "", class: ["fa", "fa-lock"]).html_safe, id: "icon"
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "password confirmation"
+      .actions
+        = f.submit "Sign up", class: "btn btn-primary"
+    = render "devise/shared/links"

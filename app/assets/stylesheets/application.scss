@@ -14,3 +14,57 @@
  *= require_self
  */
 @import "bootstrap";
+* {
+  margin: 0;
+  padding: 0;
+}
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  display: grid;
+  grid-template-rows: 81.2px auto 400px;
+  /*background: #c96567;*/
+  /*background: #9d5a63;
+  /*background: #644e5b;*/
+  background-color: #f3f3f5;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #283350;
+}
+
+a{
+  color: #283350;
+}
+a:hover{
+  color: #5c75b5;
+}
+
+h1, h2, h3, h4, h5{
+  color: #283350;
+}
+main{
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 40px !important;
+}
+footer{
+  background-color: #283350;
+}
+
+
+.btn-primary, .btn-primary a{
+  background-color: #283350 !important;
+  background-repeat: no-repeat !important;
+  border: none !important;
+}
+
+.btn-primary:hover{
+  background-color: #5c75b5 !important;
+  background-repeat: no-repeat !important;
+  border: none !important;
+}
+.btn-light{
+  border: none !important;
+}

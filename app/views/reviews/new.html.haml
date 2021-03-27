@@ -1,3 +1,2 @@
-%h1 New Review
+%h3 Отзыв для "#{@review.book.title}"
 = render 'form', review: @review
-= link_to 'Back', book_reviews_path(@book)

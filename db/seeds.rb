@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # Пользователи
-if ENV['RAILS_ENV'].to_s == 'development'
+
   require 'faker'
   99.times do |n|
     name  = Faker::Name.name
-    email = "example-#{n+1}@railstutorial.org"
+    email = "example-#{n+1}@rails.org"
     password = "password"
     User.create!(username: name,
                 email: email,
@@ -24,4 +24,4 @@ if ENV['RAILS_ENV'].to_s == 'development'
   followers = users[3..40]
   following.each { |followed| user.follow(followed) }
   followers.each { |follower| follower.follow(user) }
-end
+

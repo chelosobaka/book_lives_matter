@@ -1,0 +1,10 @@
+- content_for :form_errors do
+  - if object.errors.any?
+    #error_explanation
+      %h3
+        = pluralize(object.errors.count, "error")
+        prohibited this seed from being saved:
+
+      %ul
+        - object.errors.full_messages.each do |message|
+          %li= message

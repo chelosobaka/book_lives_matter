@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_12_02_200303) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,15 +22,15 @@ ActiveRecord::Schema.define(version: 2020_12_02_200303) do
   end
 
   create_table "authors_books", id: false, force: :cascade do |t|
-    t.integer "author_id", null: false
-    t.integer "book_id", null: false
+    t.bigint "author_id", null: false
+    t.bigint "book_id", null: false
     t.index ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id"
     t.index ["book_id", "author_id"], name: "index_authors_books_on_book_id_and_author_id"
   end
 
   create_table "book_lists", force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "list_id"
+    t.bigint "book_id"
+    t.bigint "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_book_lists_on_book_id"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_200303) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
@@ -65,8 +68,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_200303) do
   create_table "reviews", force: :cascade do |t|
     t.text "body"
     t.integer "rating"
-    t.integer "user_id"
-    t.integer "book_id"
+    t.bigint "user_id"
+    t.bigint "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
@@ -87,4 +90,9 @@ ActiveRecord::Schema.define(version: 2020_12_02_200303) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "book_lists", "books"
+  add_foreign_key "book_lists", "lists"
+  add_foreign_key "lists", "users"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "users"
 end

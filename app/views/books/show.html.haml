@@ -1,49 +1,38 @@
 - flash.each do |type, message|
   = message
-- if user_signed_in?
-  = form_for @book_list  do |form|
-    = form.collection_select :list_id, current_user.lists, :id, :name, prompt: "Select a list", class: "form-control"
-    = form.hidden_field :book_id, value: @book.id
-    = form.submit class: 'btn btn-primary'
-.row
-  .col
-    %h3
-      = @book.title
-      = @book.mean_rating(@book)
-      = star_color(@book.mean_rating(@book))
-    %p
-      Автор: #{autor_link(@book)}
-    %p
-      Серия: #{@book.series}
-    %p
-      ISBN: #{@book.isbn}
-    %p= image_tag @book.poster
-  .col
-    - @reviews.each do |review|
-      %h4
-        = review.user.username
-        \: #{review.rating}
-      %p= review.body
-      %p= review.created_at
-      - if review.user == current_user
-        = link_to "edit review", edit_book_review_path(@book.id, review.id)
-    - if user_signed_in?
-      = link_to "new review", new_book_review_path(@book.id)
 
-- if user_signed_in?
-  = form_with model: [@book, @review] do |form|
-    - if @review.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@review.errors.count, "error")
-          prohibited this review from being saved:
-        %ul
-          - @review.errors.full_messages.each do |message|
-            %li= message
-    .field
-      = form.label :body
-      = form.text_area :body
-    .field
-      = form.select :rating, collection: Review::RATING, prompt: "Select rating"
-    .actions
-      = form.submit
+.row
+  .col-8
+    .mb-4
+      %h3.book-title
+        = @book.title
+        %br
+      .text-secondary.mean-rating
+        Средняя оценка: #{@book.mean_rating(@book)} #{star_color(@book.mean_rating(@book))}
+    .row.book-info-block
+      .col-4.mt-3.mb-3
+        = image_tag @book.poster
+      .col-8.book-info.mt-3.mb-3
+        Автор: #{author_link(@book)}
+        %br/
+        Серия: #{@book.series}
+        %br/
+        ISBN: #{@book.isbn}
+        %br/
+        - if user_signed_in? && current_user.lists.present?
+          = form_for @book_list  do |form|
+            = form.collection_select :list_id, current_user.lists, :id, :name, class: "new_book_list"
+            = form.hidden_field :book_id, value: @book.id
+            %br/
+            = form.submit 'Добавить в список', class: 'btn btn-primary btn-book-list'
+  .col-4
+    %h3 Отзывы:
+    %p Читали? Поделитесь своим мнением.
+    = link_to "Написать отзыв", new_book_review_path(@book.id), class: 'btn btn-primary btn-add-review'
+    %hr
+    = render partial: 'reviews/review', collection: @reviews.last(3).reverse
+
+    = link_to "Загрузить все отзывы (#{@reviews.count})", book_reviews_path(@book.id)
+
+
+

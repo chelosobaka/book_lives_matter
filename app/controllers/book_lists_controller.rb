@@ -6,7 +6,7 @@ class BookListsController < ApplicationController
     @book_list = BookList.new(book_list_params)
     list_name = current_user.lists.find(book_list_params[:list_id]).name
     if @book_list.save(book_list_params)
-      flash[:notice] = "Book was successfully added to list #{list_name}"
+      flash[:notice] = "Книга добавлена в Ваш список \"#{list_name}\"."
       redirect_to request.referrer
     else
       flash[:alert] = @book_list.errors.full_messages.to_sentence
@@ -15,16 +15,17 @@ class BookListsController < ApplicationController
   end
 
   def destroy
+    list_id = @book_list.list_id
     @book_list.destroy
+      redirect_to user_list_path(current_user.id, list_id), notice: 'Книга удалена из списка.'
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_book_list
       @book_list = BookList.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def book_list_params
       params.require(:book_list).permit(:id, :book_id, :list_id)
     end

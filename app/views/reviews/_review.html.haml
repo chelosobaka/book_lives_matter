@@ -1,8 +1,18 @@
-= link_to "#{review.book.title}", book_path(review.book.id)
-%h4
-  = review.user.username
-  \: #{review.rating}
-%p= review.body
-%p= review.created_at
-- if review.user == current_user
-  = link_to "edit review", edit_book_review_path(review.book.id, review.id)
+- unless controller.controller_name == "books" || (controller.controller_name == "reviews" && action_name == "index")
+  = link_to "#{review.book.title}", book_path(review.book.id)
+.username-review-block
+  %h5.username-title
+    = link_to("#{review.user.username}", user_path(review.user.id))
+    \: #{review.rating} #{star_color(review.rating)}
+  %small.text-secondary (Отзывов: #{review.user.reviews.count})
+%p.text-justify.review-body= review.body
+.row.review-edit-block
+  .col
+    %p
+      - if user_has_rights?(review.user)
+        = link_to '<i class="fa fa-edit ri"></i>'.html_safe, edit_book_review_path(review.book.id, review.id), title: "Редактировать"
+        = link_to '<i class="fa fa-trash ri"></i>'.html_safe, book_review_path(review.book.id, review.id), method: :delete, data: { confirm: 'Вы уверены?' }, title: "Удалить"
+  .col
+    %p.text-right
+      %small.text-secondary= review.created_at.strftime("%d.%m.%y %M:%H")
+%hr

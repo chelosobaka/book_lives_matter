@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 root to: "books#index"
   devise_for :users
-  resources :user, only: [:index, :show] do
-    get "reviews", to: "user#user_reviews"
-    get "subscriptions_reviews", to: "user#subscriptions_reviews"
+  resources :users, only: [:index, :show] do
+    get "reviews", to: "users#user_reviews"
+    get "subscriptions_reviews", to: "users#subscriptions_reviews"
     resources :lists
     get :followers, :subscriptions
   end

@@ -2,13 +2,14 @@
   .col-6
     = render partial: "user/profile", locals: { user: @user }
   .col-6
-    %strong Name:
-    = @list.name
-    %br/
-    - @list.book_lists.each do |book_list|
-      = book_list.book.title
-      - if user_has_rights?(@user)
-        = link_to "Delete book", book_list_path(book_list), method: :delete
-    - if user_has_rights?(@user)
-      = link_to 'Edit', edit_user_list_path(@user.id, @list.id)
-    = link_to 'Back', user_lists_path(@user.id)
+    %h1= @list.name
+    .mb-2.ml-3
+      - if @list.book_lists.empty?
+        %p Список пуст
+      -else
+        - @list.book_lists.each do |book_list|
+          .list-book-line
+            .list-book-name
+              = link_to "#{book_list.book.title}", book_path(book_list.book)
+            - if user_has_rights?(@user)
+              = link_to '<i class="fa fa-trash"></i>'.html_safe, book_list_path(book_list), method: :delete

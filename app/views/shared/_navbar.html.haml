@@ -1,0 +1,31 @@
+%nav.navbar.navbar-expand-lg.bg-nav-custom
+  .container
+    %a.navbar-brand{:href => "#"}#{image_tag('logo.png', class: "brand-img")}
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        %li.nav-item
+          = link_to'<i class="fa fa-book ni"></i>Книги BLM'.html_safe , books_path, class: "nav-link"
+
+
+
+        %li.nav-item
+          = link_to '<i class="fa fa-users ni"></i>Пользователи'.html_safe , users_path, class: "nav-link"
+        - if user_signed_in?
+          %li.nav-item
+            = link_to '<i class="fa fa-list ni"></i>Ваш список'.html_safe, user_lists_path(current_user), class: "nav-link"
+
+        %li.nav-item
+          .dropdown
+            %a.nav-link.dropdown-toggle{"href" => "#", "id" => "navbarDropdown", "role" => "button", "data-toggle" => "dropdown", "aria-haspopup" => "true","aria-expanded" => "false"}#{'<i class="fa fa-user ni"></i>'.html_safe}Профиль
+            .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+              - if user_signed_in?
+                = link_to 'Профиль', user_path(current_user), class: "dropdown-item"
+                = link_to 'Изменить профиль', edit_user_registration_path, class: "dropdown-item"
+                = link_to 'Выйти', destroy_user_session_path, :method => :delete, class: "dropdown-item"
+              - else
+                = link_to 'Зарегистрироваться', new_user_registration_path, class: "dropdown-item"
+                = link_to 'Войти', new_user_session_path, class: "dropdown-item"
+
+
