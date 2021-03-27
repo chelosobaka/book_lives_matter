@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5{
 }
 main{
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   padding: 40px !important;
 }
 footer{
@@ -65,6 +65,20 @@ footer{
   background-repeat: no-repeat !important;
   border: none !important;
 }
-.btn-light{
+
+.btn-red{
+  background: #ea3c48 !important;
   border: none !important;
+  color: white !important;
+}
+
+.btn-red:hover{
+  background-color: #5c75b5 !important;
+  background-repeat: no-repeat !important;
+  border: none !important;
+}
+
+.title-with-form{
+  display: flex;
+  justify-content: space-between;
 }

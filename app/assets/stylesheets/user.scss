@@ -1,0 +1,27 @@
+.users-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
+}
+.user-line{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 36px;
+  align-items: center;
+}
+.follow-btn{
+  width: 120px;
+}
+.block-with-btn{
+  margin-left: auto;
+}
+
+.scroll-block{
+  height: 600px;
+  overflow-y: scroll;
+}
+.picture{
+  position: absolute;
+  left: -100px;
+  bottom: -80px;
+}

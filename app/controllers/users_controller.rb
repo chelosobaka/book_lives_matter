@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:search].present?
-      @users = User.where("lower(username) LIKE ?", params[:search].downcase)
+      @users = User.where("lower(username) LIKE ?", "%#{params[:search].downcase}%")
     else
       @users = User.all
     end
