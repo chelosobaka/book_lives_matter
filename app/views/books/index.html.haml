@@ -1,5 +1,5 @@
 .title-with-form
-  %h1.mb-4 Книги BLM
+  %h1 Книги BLM
   = form_tag books_path, method: "get" do
     = text_field_tag :search, params[:search]
     = submit_tag "Искать книгу", class: "btn btn-primary"
