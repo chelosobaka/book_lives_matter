@@ -1,5 +1,5 @@
-.title-with-form
-  %h1.mb-4 Пользователи BLM
+.title-with-form.hmb
+  %h1 Пользователи BLM
   = form_tag users_path, method: "get" do
     = text_field_tag :search, params[:search]
     = submit_tag "Искать пользователя", class: "btn btn-primary"

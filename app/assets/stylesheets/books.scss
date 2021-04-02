@@ -1,7 +1,14 @@
+
+.card-column{
+  position: relative;
+  padding: 15px;
+  background: white;
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
 .products-row{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  column-gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
   row-gap: 20px;
 }
 .product-img .cover img{
@@ -11,7 +18,7 @@
   height: 270px;
 }
 .product-img{
-  position: relative;
+
 }
 .product-hint{
   position: absolute;
@@ -20,9 +27,12 @@
   background-color: #fff;
   padding: 5px 10px;
   border-radius: 0 0 0 10px;
+  box-shadow: -3px 3px 8px 0px rgba(34, 60, 80, 0.2);
+  font-family: "Akrobat SemiBold";
 }
 .product-index-info{
-  margin-top: 10px;
+  padding: 10px 0;
+  font-size: 15px;
 }
 .product-author{
   margin-top: 10px;
@@ -33,5 +43,54 @@
 .product-index-info{
   min-height: 170px;
 }
+.book-info-block{
+  background: white;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
 
 
+
+.pagination {
+  font-size: 15px;
+  margin-top: 60px;
+  font-family: "Akrobat SemiBold";
+}
+
+.pagination > * {
+  margin-right: 0.1em;
+  padding: 0.3em 0.4em;
+}
+
+.pagination .page:hover {
+  background: #5c75b5 none repeat scroll 0 0;
+}
+.pagination .page:hover a{
+  color: white;
+}
+.pagination a:hover {
+  color: white;
+  text-decoration: none;
+}
+.pagination a:active {
+  text-shadow: none;
+}
+.page.gap:hover{
+  background: none !important;
+  cursor: default;
+}
+.pagination .current {
+  background: #283350 none repeat scroll 0 0;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination .disabled {
+  color: #C0C0C0;
+}
+
+.pagination .first:hover, .prev:hover, .next:hover, .last:hover{
+  background: #5c75b5 none repeat scroll 0 0;
+}
+.pagination .first:hover a, .prev:hover a, .next:hover a, .last:hover a{
+  color: white;
+}

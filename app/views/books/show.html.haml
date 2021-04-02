@@ -3,16 +3,15 @@
 
 .row
   .col-8
-    .mb-4
-      %h3.book-title
-        = @book.title
-        %br
-      .text-secondary.mean-rating
-        Средняя оценка: #{@book.mean_rating(@book)} #{star_color(@book.mean_rating(@book))}
+    %h3.book-title
+      = @book.title
+      %br
+    .text-secondary.mean-rating
+      Средняя оценка: #{@book.mean_rating(@book)} #{star_color(@book.mean_rating(@book))}
     .row.book-info-block
-      .col-4.mt-3.mb-3
+      .col-4
         = image_tag @book.poster
-      .col-8.book-info.mt-3.mb-3
+      .col-8.book-info
         Автор: #{author_link(@book)}
         %br/
         Серия: #{@book.series}

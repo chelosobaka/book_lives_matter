@@ -1,3 +1,26 @@
-// Place all the styles related to the Reviews controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.review-body{
+  max-height: 120px;
+  overflow: hidden;
+}
+.read-more{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #283350;
+}
+.read-more:hover{
+  color: #5c75b5;
+}
+.read-more:focus{
+  outline: none;
+}
+.read-more::-moz-focus-inner{
+  border: 0;
+}
+.hid{
+  display: none;
+}
+

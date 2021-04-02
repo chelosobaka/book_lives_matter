@@ -5,9 +5,9 @@ class BooksController < ApplicationController
     if params[:search].present?
       @books = Book.joins(:authors).where("lower(title) LIKE ? OR lower(authors.name) LIKE ?",
       "%#{params[:search].downcase}%",
-      "%#{params[:search].downcase}%").page(params[:page]).per(18)
+      "%#{params[:search].downcase}%").page(params[:page]).per(15)
     else
-      @books = Book.all.page(params[:page]).per(18)
+      @books = Book.all.page(params[:page]).per(15)
     end
   end
 

@@ -14,6 +14,44 @@
  *= require_self
  */
 @import "bootstrap";
+@font-face{
+  font-family: "Akrobat";
+  src: url('/assets/Akrobat');
+}
+@font-face{
+  font-family: "Akrobat Black";
+  src: url('/assets/Akrobat-Black');
+}
+@font-face{
+  font-family: "Akrobat Bold";
+  src: url('/assets/Akrobat-Bold');
+}
+@font-face{
+  font-family: "Akrobat ExtraBold";
+  src: url('/assets/Akrobat-ExtraBold');
+}
+@font-face{
+  font-family: "Akrobat ExtraLight";
+  src: url('/assets/Akrobat-ExtraLight');
+}
+@font-face{
+  font-family: "Akrobat Light";
+  src: url('/assets/Akrobat-Light');
+}
+@font-face{
+  font-family: "Akrobat Regular";
+  src: url('/assets/Akrobat-Regular');
+}
+@font-face{
+  font-family: "Akrobat SemiBold";
+  src: url('/assets/Akrobat-SemiBold');
+}
+@font-face{
+  font-family: "Akrobat Thin";
+  src: url('/assets/Akrobat-Thin');
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -32,6 +70,8 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #283350;
+  font-family: 'Roboto', sans-serif;
+
 }
 
 a{
@@ -43,6 +83,7 @@ a:hover{
 
 h1, h2, h3, h4, h5{
   color: #283350;
+  font-family: "Akrobat Black", sans-serif;
 }
 main{
   margin-top: 60px;
@@ -53,7 +94,13 @@ footer{
   background-color: #283350;
 }
 
-
+.hmb{
+  margin-bottom: 40px;
+}
+.btn{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
 .btn-primary, .btn-primary a{
   background-color: #283350 !important;
   background-repeat: no-repeat !important;
@@ -81,4 +128,5 @@ footer{
 .title-with-form{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
