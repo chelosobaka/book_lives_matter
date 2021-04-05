@@ -2,11 +2,13 @@
   .col-6
     = render partial: "profile", locals: { user: @user }
   .col-6
+    %h1.hmb Подписки
     - if @subscriptions.empty?
       - if user_has_rights?(@user)
         %p У вас нету подписок.
       - else
         %p У #{@user.username} нету подписок.
     - else
-      .users-container
-        = render partial: "user", collection: @subscriptions
+      .scroll-block
+        .users-container
+          = render partial: "user", collection: @subscriptions

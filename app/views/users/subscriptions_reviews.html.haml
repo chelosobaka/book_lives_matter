@@ -2,6 +2,7 @@
   .col-6
     = render partial: "profile", locals: { user: @user }
   .col-6
+    %h1.hmb Отзывы подписчиков
     - if @reviews.empty?
       %p Отзывов подписчиков нету.
     - else

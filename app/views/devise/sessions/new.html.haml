@@ -1,17 +1,16 @@
 .container-devise
-  .center
-    %h3 Log in
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  %h3 Log in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email, content_tag(:span , "", class: ["fa", "fa-at"]).html_safe, id: "icon"
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email"
+    .field
+      = f.label :password, content_tag(:span , "", class: ["fa", "fa-lock"]).html_safe, id: "icon"
+      = f.password_field :password, autocomplete: "current-password", placeholder: "password"
+    - if devise_mapping.rememberable?
       .field
-        = f.label :email, content_tag(:span , "", class: ["fa", "fa-at"]).html_safe, id: "icon"
-        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email"
-      .field
-        = f.label :password, content_tag(:span , "", class: ["fa", "fa-lock"]).html_safe, id: "icon"
-        = f.password_field :password, autocomplete: "current-password", placeholder: "password"
-      - if devise_mapping.rememberable?
-        .field
-          = f.check_box :remember_me
-          = f.label :remember_me, class: "label-checkbox"
-      .actions
-        = f.submit "Log in", class: "btn btn-primary"
-    = render "devise/shared/links"
+        = f.check_box :remember_me
+        = f.label :remember_me, class: "label-checkbox"
+    .actions
+      = f.submit "Log in", class: "btn btn-primary"
+  = render "devise/shared/links"

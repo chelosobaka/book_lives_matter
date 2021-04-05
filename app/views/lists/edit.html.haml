@@ -2,8 +2,5 @@
   .col-6
     = render partial: "users/profile", locals: { user: @user }
   .col-6
-    %h1 Editing List
+    %h1.hmb Редактировать список
     = render 'form', list: @list
-    = link_to 'Show', user_list_path(current_user, @list)
-    |
-    = link_to 'Back', user_lists_path(current_user)

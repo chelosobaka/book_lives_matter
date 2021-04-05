@@ -46,10 +46,32 @@
 .book-info-block{
   background: white;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  padding: 20px;
+  margin-right: 40px !important;
 }
 
+.book-info-block > .col-4 > img{
+  width: 100%;
+  margin-left: -15px;
+}
+.book-info{
+  position: relative;
+}
+.new_book_list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: absolute;
+  bottom: 0;
+}
 
+.mean-rating{
+  margin-bottom: 10px;
+}
 
+.btn-book-list{
+  min-width: 170px;
+}
 .pagination {
   font-size: 15px;
   margin-top: 60px;
@@ -93,4 +115,11 @@
 }
 .pagination .first:hover a, .prev:hover a, .next:hover a, .last:hover a{
   color: white;
+}
+.book-info table{
+  border-spacing: 10px;
+  border-collapse: separate;
+}
+.book-info td{
+  vertical-align: top;
 }

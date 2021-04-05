@@ -2,6 +2,5 @@
   .col-6
     = render partial: "users/profile", locals: { user: @user }
   .col-6
-    %h1 Новый список
+    %h1.hmb Новый список
     = render 'form'
-    = link_to 'Back', user_lists_path(@user.id)

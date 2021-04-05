@@ -12,12 +12,22 @@
       .col-4
         = image_tag @book.poster
       .col-8.book-info
-        Автор: #{author_link(@book)}
-        %br/
-        Серия: #{@book.series}
-        %br/
-        ISBN: #{@book.isbn}
-        %br/
+        %table
+          %tr
+            %td
+              Автор:
+            %td
+              = author_link(@book)
+          %tr
+            %td
+              Серия:
+            %td
+              = @book.series
+          %tr
+            %td
+              ISBN:
+            %td
+              = @book.isbn
         - if user_signed_in? && current_user.lists.present?
           = form_for @book_list  do |form|
             = form.collection_select :list_id, current_user.lists, :id, :name, class: "new_book_list"
