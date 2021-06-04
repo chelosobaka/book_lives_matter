@@ -8,4 +8,7 @@
         = form.label "Оценка: "
         = form.select :rating, Review::RATING
       .action
+      - if controller.action_name == "new"
         = form.submit "Оставить отзыв", class: "btn btn-primary"
+      - else
+        = form.submit "Редактировать отзыв", class: "btn btn-primary"

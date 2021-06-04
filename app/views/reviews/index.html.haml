@@ -1,3 +1,6 @@
 %h3.mb-4=link_to @book.title, book_path(@book.id)
+%p Читали? Поделитесь своим мнением.
+= link_to "Написать отзыв", new_book_review_path(@book.id), class: 'btn btn-primary btn-add-review'
+%hr
 .ml-3
   = render partial: 'reviews/review', collection: @reviews

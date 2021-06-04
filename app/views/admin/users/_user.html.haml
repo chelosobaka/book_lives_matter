@@ -1,0 +1,10 @@
+.user-line
+  .user-link-block
+    = link_to "#{user.username}", user_path(user)
+  - if user_signed_in?
+    .block-with-btn
+      - if current_user != user
+        - if current_user.following?(user)
+          = link_to 'Отписаться', follow_path(user.id), method: :delete, class: "btn btn-red follow-btn"
+        - else
+          = link_to 'Подписаться', follows_path(follower_id: user.id), method: :post, class: "btn btn-primary follow-btn"

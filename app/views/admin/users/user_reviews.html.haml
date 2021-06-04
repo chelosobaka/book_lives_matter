@@ -1,0 +1,12 @@
+.row
+  .col-6
+    = render partial: "profile", locals: { user: @user }
+  .col-6
+    %h1.hmb Ваши отзывы
+    - if @reviews.empty?
+      - if user_has_rights?(@user)
+        %p Вы не оставили ни одного отзыва.
+      - else
+        %p #{@user.username} не оставил ни одного отзыва.
+    - else
+      = render partial: 'reviews/review', collection: @reviews

@@ -1,0 +1,13 @@
+%h1.hmb= user.username
+.pl-3
+  = link_to "Списки пользователя", user_lists_path(user.id)
+  %br/
+  = link_to "Подписчики", user_followers_path(user.id)
+  %br/
+  = link_to "Подписки", user_subscriptions_path(user.id)
+  %br/
+  = link_to "Отзывы пользователя", user_reviews_path(user.id)
+  %br/
+  - if user_has_rights?(user)
+    = link_to "Отзывы подписчиков", user_subscriptions_reviews_path(user.id)
+  %br/

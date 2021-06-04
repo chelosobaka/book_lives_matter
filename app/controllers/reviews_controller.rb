@@ -1,14 +1,10 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_book
 
   def index
     @reviews = @book.reviews
-  end
-
-  def show
-
   end
 
   def new
@@ -24,7 +20,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.book = @book
     if @review.save
-      redirect_to @book, notice: 'Review was successfully created.'
+      redirect_to @book, notice: 'Отзыв опубликован.'
     else
       render :new
     end
@@ -32,7 +28,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to book_path(@book.id), notice: 'Review was successfully updated.'
+      redirect_to book_path(@book.id), notice: 'Отзыв обновлён.'
     else
       render :edit
     end
@@ -40,7 +36,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to book_path(@book.id), notice: 'Review was successfully destroyed.'
+    redirect_to book_path(@book.id), notice: 'Отзыв удалён.'
   end
 
   private

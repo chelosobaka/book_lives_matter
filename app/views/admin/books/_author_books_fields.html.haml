@@ -1,0 +1,4 @@
+.nested-fields
+  .authors
+    = f.fields_for :author do |author|
+      = render "author_fields", f: author

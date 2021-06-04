@@ -8,10 +8,17 @@ root to: "books#index"
     get :followers, :subscriptions
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :books do
-    resources :reviews
+  resources :books, only: [:index, :show] do
+    resources :reviews, except: [:show]
   end
-  resources :authors
+  resources :authors, only: [:show]
   resources :book_lists, only: [:create, :destroy]
   resources :follows, only: [:create, :destroy]
+
+  namespace :admin do
+    root to: "books#index"
+    resources :books
+    resources :users
+    resources :authors
+  end
 end

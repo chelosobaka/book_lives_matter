@@ -1,0 +1,23 @@
+%H1 Авторы
+- flash.each do |type, message|
+  = message
+%table.table
+  %thead.thead-dark
+    %tr
+      %th{:scope => "col"} id
+      %th{:scope => "col"} Имя
+      %th{:scope => "col"} Книг
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+  %tbody
+    -@authors.each do |author|
+      %tr
+        %th{:scope => "row"}=author.id
+        %td=link_to author.name, admin_author_path(author.id)
+        %td=author.books.count
+        %td=link_to "удалить", admin_author_path(author.id), method: "delete"
+        %td=link_to "изменить", edit_admin_author_path(author.id)
+
+= paginate @authors, outer_window: 3
+
+= link_to "new", new_admin_author_path

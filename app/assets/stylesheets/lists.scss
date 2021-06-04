@@ -2,3 +2,11 @@
   display: flex;
   justify-content: space-between;
 }
+.list-book-line{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.list-book-line .fa{
+  font-size: 16pt;
+}

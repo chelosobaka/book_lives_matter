@@ -17,8 +17,55 @@ ru:
       previous: "&lsaquo; Предыдущая"
       truncate: "&hellip;"
   activerecord:
+    models:
+      user:
+        few: "Пользователя"
+        many: "Пользователей"
+        one: "Пользователь"
+        other: "Пользователи"
+      book:
+        few: "Книгу"
+        many: "Книг"
+        one: "Книга"
+        other: "Книги"
+      list:
+        few: "Списка"
+        many: "Списков"
+        one: "Список"
+        other: "Списки"
+      review:
+        few: "Отзыва"
+        many: "Отзывов"
+        one: "Отзыв"
+        other: "Отзывы"
+      author:
+        few: "Автора"
+        many: "Авторов"
+        one: "Автор"
+        other: "Авторы"
+    attributes:
+      user:
+        username: "Никнейм"
+      book:
+        title: "Заголовок"
+        series: "Серия"
+        lb_id: "Id на Лабиринте"
+        isbn: "ISBN"
+        poster: "Обложка"
+      list:
+        name: "Название"
+      review:
+        body: "Тело отзыва"
+        rating: "Рейтинг"
+      author:
+        name: "Имя"
     errors:
       messages:
+        not_saved:
+          few: "сохранение не удалось из-за %{count} ошибок:"
+          many: "сохранение не удалось из-за %{count} ошибок:"
+          one: "сохранение не удалось из-за %{count} ошибки:"
+          other: "сохранение не удалось из-за %{count} ошибки:"
         record_invalid: 'Возникли ошибки: %{errors}'
         restrict_dependent_destroy:
           has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
@@ -33,7 +80,7 @@ ru:
     - Пт
     - Сб
     abbr_month_names:
-    - 
+    -
     - янв.
     - февр.
     - марта
@@ -283,3 +330,8 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
+  error:
+    one: ошибка
+    few: ошибки
+    many: ошибок
+    other: ошибки

@@ -2,8 +2,8 @@
   - if object.errors.any?
     #error_explanation
       %h3
-        = pluralize(object.errors.count, "error")
-        prohibited this seed from being saved:
+        #{pluralize(object.errors.count, t('error', :count => object.errors.count))}:
+        = t('activerecord.errors.messages.not_saved', :count => object.errors.count)
 
       %ul
         - object.errors.full_messages.each do |message|
