@@ -21,6 +21,24 @@ class Admin::BooksController < Admin::AdminController
   end
 
   def create
+    book = Book.new(book_params["title"], book_params["series"], book_params["lb_id"], book_params["isbn"], book_params["poster"])
+    if book_params["author_books_attributes"].present?
+      book_params["author_books_attributes"].each do |author_books|
+        author = Author.find_or_create_by(author_books[1]["author_attributes"]["name"])
+        author_book = AuthorBook.new(author_id: author.id, book_id: book.id)
+        if book.save && author_book.save
+          redirect_to admin_books_path, notice: 'Книга успешно создана.'
+        else
+          render :new
+        end
+      end
+    end
+
+    if book.save
+      redirect_to admin_books_path, notice: 'Книга успешно создана.'
+    else
+      render :new
+    end
 =begin
     @book = Book.new(book_params)
       if @book.save
@@ -50,7 +68,7 @@ class Admin::BooksController < Admin::AdminController
       @book = Book.find(params[:id])
     end
 
-    def author_params
+    def book_params
       params.require(:book).permit(:title, :series, :lb_id, :isbn, :poster, author_books_attributes: [author_attributes: [:name]])
     end
 end
