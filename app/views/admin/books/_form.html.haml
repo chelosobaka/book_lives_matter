@@ -7,24 +7,27 @@
       %ul
         - book.errors.full_messages.each do |message|
           %li= message
-  .field
-    = book_form.label "Название"
-    = book_form.text_field :title
-  .field
-    = book_form.label "Серия"
-    = book_form.text_field :series
-  .field
-    = book_form.label "id на лабиринте"
-    = book_form.text_field :lb_id
-  .field
-    = book_form.label "ISBN"
-    = book_form.text_field :isbn
-  .field
-    = book_form.label "Постер"
-    = book_form.text_field :poster
-  = book_form.fields_for :author_books do |author_book|
-    = render "author_books_fields", f: author_book
-  .links
-    = link_to_add_association 'add author', book_form, :author_books, partial: "author_books_fields", wrap_object: Proc.new {|author_book| author_book.build_author; author_book}
-  .actions
-    = book_form.submit
+  .admin-field-form
+    .field
+      = book_form.label "Название"
+      = book_form.text_field :title
+    .field
+      = book_form.label "Серия"
+      = book_form.text_field :series
+    .field
+      = book_form.label "id на лабиринте"
+      = book_form.text_field :lb_id
+    .field
+      = book_form.label "ISBN"
+      = book_form.text_field :isbn
+    .field
+      = book_form.label "Постер"
+      = book_form.text_field :poster
+    .field
+      %label Автор
+      = book_form.fields_for :author_books do |author_book|
+        = render "author_books_fields", f: author_book
+      .links
+        = link_to_add_association 'Добавить автора', book_form, :author_books, partial: "author_books_fields", wrap_object: Proc.new {|author_book| author_book.build_author; author_book}
+    .actions
+      = book_form.submit

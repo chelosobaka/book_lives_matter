@@ -7,8 +7,9 @@
       %ul
         - author.errors.full_messages.each do |message|
           %li= message
-  .field
-    = form.label "Имя"
-    = form.text_field :name
-  .actions
-    = form.submit
+  .admin-field-form
+    .field
+      = form.label "Имя"
+      = form.text_field :name
+    .actions
+      = form.submit

@@ -28,12 +28,6 @@
               ISBN:
             %td
               = @book.isbn
-        - if user_signed_in? && current_user.lists.present?
-          = form_for @book_list  do |form|
-            = form.collection_select :list_id, current_user.lists, :id, :name, class: "new_book_list"
-            = form.hidden_field :book_id, value: @book.id
-            %br/
-            = form.submit 'Добавить в список', class: 'btn btn-primary btn-book-list'
   .col-4
     %h3 Отзывы:
     %p Читали? Поделитесь своим мнением.

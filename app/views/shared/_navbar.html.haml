@@ -1,6 +1,7 @@
 %nav.navbar.navbar-expand-lg.bg-nav-custom
   .container
-    %a.navbar-brand{:href => "#"}#{image_tag('logo.png', class: "brand-img")}
+    %a.navbar-brand
+      =link_to (image_tag('logo.png', class: "brand-img")), books_path
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
