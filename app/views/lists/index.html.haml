@@ -8,7 +8,7 @@
         .list-line
           .list-name-block
             = link_to "#{list.name}", user_list_path(@user.id, list)
-          - if user_has_rights?(@user)
+          - if can? :manage, list
             .list-icon-block
               = link_to '<i class="fa fa-edit"></i>'.html_safe, edit_user_list_path(@user.id, list), title: "Редактировать"
               = link_to '<i class="fa fa-trash"></i>'.html_safe, user_list_path(@user.id, list), method: :delete, data: { confirm: 'Вы уверены' }, title: "Удалить"

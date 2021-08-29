@@ -28,17 +28,18 @@
               ISBN:
             %td
               = @book.isbn
-        - if user_signed_in? && current_user.lists.present?
+        - if can? :create, @book_list
           = form_for @book_list  do |form|
             = form.collection_select :list_id, current_user.lists, :id, :name, class: "new_book_list"
             = form.hidden_field :book_id, value: @book.id
             %br/
             = form.submit 'Добавить в список', class: 'btn btn-primary btn-book-list'
   .col-4
-    %h3 Отзывы:
-    %p Читали? Поделитесь своим мнением.
-    = link_to "Написать отзыв", new_book_review_path(@book.id), class: 'btn btn-primary btn-add-review'
-    %hr
+    - if can? :create, @review
+      %h3 Отзывы:
+      %p Читали? Поделитесь своим мнением.
+      = link_to "Написать отзыв", new_book_review_path(@book.id), class: 'btn btn-primary btn-add-review'
+      %hr
     = render partial: 'reviews/review', collection: @reviews.last(3).reverse
 
     = link_to "Загрузить все отзывы (#{@reviews.count})", book_reviews_path(@book.id)
