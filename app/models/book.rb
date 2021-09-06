@@ -27,11 +27,11 @@ class Book < ApplicationRecord
   end
 
 
-  def self.create_all
+  def self.create_all(limit)
     path = Dir.glob('db/labirint.json').first
     file = File.read(path)
     data = JSON.load(file)
-    data.each do |h|
+    data.take(limit).each do |h|
       unless h["authors"].nil?
         h["authors"].each do |author|
           Author.create(name: author)
