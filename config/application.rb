@@ -17,6 +17,6 @@ module Blm
     # the framework and any gems in your application.
     config.i18n.default_locale = :ru
     config.assets.enabled = true
-    config.assets.paths << Rails.root.join('/app/assets/fonts')
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
