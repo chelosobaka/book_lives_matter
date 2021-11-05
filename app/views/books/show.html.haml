@@ -7,7 +7,7 @@
       = @book.title
       %br
     .text-secondary.mean-rating
-      Средняя оценка: #{@book.mean_rating(@book)} #{star_color(@book.mean_rating(@book))}
+      Средняя оценка: #{@book.average_rating} #{star_color(@book.average_rating)}
     .row.book-info-block
       .col-4
         = image_tag @book.poster

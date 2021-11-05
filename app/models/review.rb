@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   belongs_to :book
 
   validates :body, :user, presence: true
-  validates :body, length: {minimum: 100, maximum: 4000}
+  validates :body, length: {minimum: 10, maximum: 4000}
   validates :rating, presence: true, inclusion: {in: RATING}
 
   scope :lately, lambda{where "updated_at >= ?", 2.days.ago}

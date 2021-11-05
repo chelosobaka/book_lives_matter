@@ -7,10 +7,10 @@ class Book < ApplicationRecord
 
   accepts_nested_attributes_for :author_books
 
-  #before_save :find_or_create_authors
+  before_save :find_or_create_authors
 
-  #validates :isbn, uniqueness: true
-  #validates :lb_id, uniqueness: true
+  validates :isbn, uniqueness: true
+  validates :lb_id, uniqueness: true
 
   def find_or_create_authors
     self.author_books.each do |author_book|
@@ -18,11 +18,11 @@ class Book < ApplicationRecord
     end
   end
 
-  def mean_rating(book)
-    if book.reviews.count == 0
+  def average_rating
+    if self.reviews.count == 0
       0
     else
-      all_rating = book.reviews.average(:rating).round(1)
+      all_rating = self.reviews.average(:rating).round(1)
     end
   end
 

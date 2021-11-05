@@ -13,14 +13,14 @@ class User < ApplicationRecord
   has_many :subscriptions, through: :subscription_relationships
 
 
-
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :username, :email, presence: true
   validates :email, uniqueness: true
 
   def follow(another_user_id)
     subscription_relationships.create(followed_user_id: another_user_id)
   end
-
+ 
   def unfollow(another_user_id)
     subscription_relationships.find_by(followed_user_id: another_user_id).destroy
   end
