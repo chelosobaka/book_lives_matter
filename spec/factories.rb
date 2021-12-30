@@ -28,12 +28,24 @@ FactoryBot.define do
     series{ Faker::Book.publisher }
     sequence(:lb_id){ |n| n}
     sequence(:isbn){ |n| "ISBN#{n}" }
-    :author
+
     factory :book_with_reviews do 
       after(:create) do |book|
         user = create(:user)
         create_list(:review, 10, book_id: book.id, user_id: user.id)
-        book.reload
+        #book.reload
+      end
+    end
+
+    factory :book_with_author do
+      after(:create) do |book|
+        book.authors << create(:author)
+      end
+    end
+
+    factory :book_with_test_author do
+      after(:create) do |book|
+        book.authors << create(:author, name: "Test Author")
       end
     end
   end
@@ -45,6 +57,11 @@ FactoryBot.define do
     book{ create(:book) }
     :book
     :user
+  end
+
+  factory :author_book do 
+    :author
+    :book
   end
 end
 

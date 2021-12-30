@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def index
     if params[:search].present?
-      @books = Book.joins(:authors).where("lower(title) LIKE ? OR lower(authors.name) LIKE ?",
+      @books = Book.left_joins(:authors).where("lower(books.title) LIKE ? OR lower(authors.name) LIKE ?",
       "%#{params[:search].downcase}%",
       "%#{params[:search].downcase}%").page(params[:page]).per(15)
     else
