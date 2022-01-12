@@ -16,39 +16,51 @@
 @import "bootstrap";
 @font-face{
   font-family: "Akrobat";
-  src: url('/assets/Akrobat');
+  src: asset-url('Akrobat.ttf');
 }
 @font-face{
   font-family: "Akrobat Black";
-  src: url('/assets/Akrobat-Black');
+  src: asset-url('Akrobat-Black.ttf');
 }
 @font-face{
   font-family: "Akrobat Bold";
-  src: url('/assets/Akrobat-Bold');
+  src: asset-url('Akrobat-Bold.ttf');
 }
 @font-face{
   font-family: "Akrobat ExtraBold";
-  src: url('/assets/Akrobat-ExtraBold');
+  src: asset-url('Akrobat-ExtraBold.ttf');
 }
 @font-face{
   font-family: "Akrobat ExtraLight";
-  src: url('/assets/Akrobat-ExtraLight');
+  src: asset-url('Akrobat-ExtraLight.ttf');
 }
 @font-face{
   font-family: "Akrobat Light";
-  src: url('/assets/Akrobat-Light');
+  src: asset-url('Akrobat-Light.ttf');
 }
 @font-face{
   font-family: "Akrobat Regular";
-  src: url('/assets/Akrobat-Regular');
+  src: asset-url('Akrobat-Regular.ttf');
 }
 @font-face{
   font-family: "Akrobat SemiBold";
-  src: url('/assets/Akrobat-SemiBold');
+  src: asset-url('Akrobat-SemiBold.ttf');
 }
 @font-face{
   font-family: "Akrobat Thin";
-  src: url('/assets/Akrobat-Thin');
+  src: asset-url('Akrobat-Thin.ttf');
+}
+@font-face{
+  font-family: "Pobeda Bold";
+  src: asset-url('pobeda-bold.ttf');
+}
+@font-face{
+  font-family: "Pobeda Regular";
+  src: asset-url('pobeda-regular.ttf');
+}
+@font-face{
+  font-family: "Oranienbaum";
+  src: asset-url('Oranienbaum.ttf');
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
@@ -58,4 +70,7 @@
 }
 html{
   height: 100%;
+}
+a{
+  color: inherit;
 }

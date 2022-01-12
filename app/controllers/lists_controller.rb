@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :authenticate_user!, exept: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @lists = @user.lists
