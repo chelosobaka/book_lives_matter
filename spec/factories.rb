@@ -12,6 +12,23 @@ FactoryBot.define do
       :follow
       :followed
     end
+    factory :user_with_lists_with_books do 
+      after(:create) do |user|
+        create_list(:list_with_books, 5, user_id: user.id)
+      end
+    end
+  end
+
+  factory :list do 
+    name{Faker::App.name}
+    :user
+    factory :list_with_books do
+      after(:create){create_list(:book, 5)}
+    end
+
+    factory :list_with_user_and_books do 
+      after(:create){create_list(:book, 5)}
+    end
   end
 
   factory :follow do 
