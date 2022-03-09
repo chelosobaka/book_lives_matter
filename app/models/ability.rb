@@ -5,16 +5,21 @@ class Ability
 
   def initialize(user)
 
-    
-    if user.present?
-      can :create, Review
+    user ||= User.new
+    #if user == current_user
+      can [:read, :create], Review
+      can :manage, Review do |review|
+        review.user == user
+      end
+
+      if user.lists.present?
+        can :create, BookList
+      end
+
+      can :manage, List do |list|
+      list.user == user
     end
 
-    if user.present? && user.lists.present?
-      can :create, BookList
-    end
-
-    can :manage, List, user_id: user.id
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

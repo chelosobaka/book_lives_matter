@@ -45,7 +45,7 @@ FactoryBot.define do
     series{ Faker::Book.publisher }
     sequence(:lb_id){ |n| n}
     sequence(:isbn){ |n| "ISBN#{n}" }
-
+    poster{ "https://img3.labirint.ru/rc/9fbe3098e1a6a4977f86865c322e029a/220x340/books1/1/cover.jpg?1563442231" }
     factory :book_with_reviews do 
       after(:create) do |book|
         user = create(:user)

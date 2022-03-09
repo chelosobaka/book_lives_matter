@@ -2,7 +2,8 @@
   .col-6
     = render partial: "profile", locals: { user: @user }
   .col-6
-    %h1.hmb Ваши отзывы
+    %h1.hmb 
+      = your_review_title(@user)
     - if @reviews.empty?
       - if user_has_rights?(@user)
         %p Вы не оставили ни одного отзыва.

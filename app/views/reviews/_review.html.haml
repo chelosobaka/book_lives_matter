@@ -9,7 +9,7 @@
 .row.review-edit-block
   .col
     %p
-      - if user_has_rights?(review.user)
+      - if can? :manage, review
         = link_to '<i class="fa fa-edit ri"></i>'.html_safe, edit_book_review_path(review.book.id, review.id), title: "Редактировать"
         = link_to '<i class="fa fa-trash ri"></i>'.html_safe, book_review_path(review.book.id, review.id), method: :delete, data: { confirm: 'Вы уверены?' }, title: "Удалить"
   .col
