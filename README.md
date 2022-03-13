@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Учебный аналог лабиринта
+https://blm88.herokuapp.com/
+тестовый пользователь: 
+логин: test@mail.ru
+пароль: 123456
