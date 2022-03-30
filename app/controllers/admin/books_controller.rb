@@ -23,16 +23,15 @@ class Admin::BooksController < Admin::AdminController
   end
 
   def create
-    book = Book.create(title: book_params["title"], series: book_params["series"], lb_id: book_params["lb_id"], 
+    @book = Book.new(title: book_params["title"], series: book_params["series"], lb_id: book_params["lb_id"],
       isbn: book_params["isbn"], poster: book_params["poster"])
-    if book_params["author_books_attributes"].present?
-      book_params["author_books_attributes"].each do |author_books|
-        author = Author.find_or_create_by(name: "#{author_books[1]["author_attributes"]["name"]}")
-        author_book = AuthorBook.create(author_id: author.id, book_id: book.id)
+    if @book.save
+      if book_params["author_books_attributes"].present?
+        book_params["author_books_attributes"].each do |author_books|
+          @author = Author.find_or_create_by(name: "#{author_books[1]["author_attributes"]["name"]}")
+          @author_book = AuthorBook.create(author_id: @author.id, book_id: @book.id)
+        end
       end
-    end
-
-    if book.persisted?
       redirect_to admin_books_path, notice: 'Книга успешно создана.'
     else
       render :new
@@ -50,7 +49,7 @@ class Admin::BooksController < Admin::AdminController
   def destroy
     if @book.destroy
       redirect_to admin_books_url, notice: 'Книга удалён.'
-    end 
+    end
   end
 
   private

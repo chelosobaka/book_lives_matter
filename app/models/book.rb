@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   accepts_nested_attributes_for :author_books
 
   before_save :find_or_create_authors
-
+  validates :title, presence: true
   validates :isbn, uniqueness: true
   validates :lb_id, uniqueness: true
 
